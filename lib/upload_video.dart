@@ -115,27 +115,27 @@ class _UploadVideoState extends State<UploadVideo> {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.video
     );
+    if(result == null)return;
     if (result != null) {
       video = File(result.files.single.path??'');
-      await uploadAudioOrVideo(video?.path??'');
+      await uploadAudioOrVideo(video?.path??'','mp4');
         setState(() {
 
         });
     }
-    if(result == null)return;
   }
 
   uploadAudio()async{
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.audio
     );
+    if(result == null)return;
     if (result != null) {
       audio = File(result.files.single.path??'');
-     await uploadAudioOrVideo(audio?.path??'');
+     await uploadAudioOrVideo(audio?.path??'','mp3');
       setState(() {
 
         });
     }
-    if(result == null)return;
   }
 }
